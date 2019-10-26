@@ -3,31 +3,31 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     mochaTest: {
       test: {
-        src: ['test/**/*.js']
-      }
+        src: ['test/**/*.js'],
+      },
     },
     mocha_istanbul: {
       coverage: {
         src: 'test',
         options: {
-          timeout: 20000,
+          'timeout': 20000,
           'report-formats': 'html',
-          print: 'summary',
-          check: {
+          'print': 'summary',
+          'check': {
             lines: 60,
             statements: 70,
             functions: 100,
-            branches: 50
-          }
-        }
-      }
+            branches: 50,
+          },
+        },
+      },
     },
     eslint: {
       options: {
-        configFile: '.eslintrc.json'
+        configFile: '.eslintrc.json',
       },
-      target: ['src/**/*.js', 'test/**/*.js']
-    }
+      target: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+    },
   });
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-eslint');
