@@ -1,7 +1,9 @@
+var lucy = require('../src/lucy');
+
 var fake = {
   printed: "",
   log: function (text) {
-    printed = text;
+    this.printed = text;
   }
 };
 lucy.hello("Louise", "fr", fake);

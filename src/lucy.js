@@ -1,4 +1,4 @@
-var lucy = {
+module.exports = {
   hello: function (name, locale, c = console) {
     if (locale == "fr") {
       c.log("Bon jour, " + name);
