@@ -1,11 +1,9 @@
 var lucy = {
   hello: function (name, locale) {
-    var text;
-    if (lang == "fr") {
-      text = "Bon jour, " + name;
+    if (locale == "fr") {
+      console.log("Bon jour, " + name);
     } else {
-      text = "Hello, " + name;
+      console.log("Hello, " + name);
     }
-    console.log(text);
   }
 };
