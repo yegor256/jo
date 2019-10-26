@@ -1,9 +1,9 @@
 module.exports = {
-  hello: function (name, locale, c = console) {
-    if (locale == "fr") {
-      c.log("Bon jour, " + name);
+  hello: function(name, locale, c = console) {
+    if (locale == 'fr') {
+      c.log('Bon jour, ' + name);
     } else {
-      c.log("Hello, " + name);
+      c.log('Hello, ' + name);
     }
-  }
+  },
 };

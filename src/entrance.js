@@ -1,8 +1,8 @@
-function entrance(d) {
+module.exports = function entrance(d) {
   this.doorman = d;
-  this.enter = function (friends) {
-    friends.forEach(function (name) {
+  this.enter = function(friends) {
+    friends.forEach(function(name) {
       this.doorman.hello(name);
     });
-  }
+  };
 };
