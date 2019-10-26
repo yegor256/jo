@@ -1,5 +1,10 @@
-lucy.hello("Louise", "fr");
-var printed = // Grab the text just printed
-if ("Bon jour, Louise" !== printed) {
-  throw "lucy.hello() printed this: " + printed;
+var fake = {
+  printed: "",
+  log: function (text) {
+    printed = text;
+  }
+};
+lucy.hello("Louise", "fr", fake);
+if ("Bon jour, Louise" !== fake.printed) {
+  throw "lucy.hello() printed this: " + fake.printed;
 }

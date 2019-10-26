@@ -1,9 +1,9 @@
 var lucy = {
-  hello: function (name, locale) {
+  hello: function (name, locale, c = console) {
     if (locale == "fr") {
-      console.log("Bon jour, " + name);
+      c.log("Bon jour, " + name);
     } else {
-      console.log("Hello, " + name);
+      c.log("Hello, " + name);
     }
   }
 };
