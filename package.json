@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "author": "Yegor Bugayenko",
   "license": "MIT",
+  "repository": "yegor256/jo",
   "devDependencies": {
+    "grunt": "1.0.4",
+    "grunt-mocha-test": "0.13.3",
     "mocha": "6.1.4"
   }
 }
