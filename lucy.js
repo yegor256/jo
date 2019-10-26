@@ -1,14 +1,11 @@
 var lucy = {
   hello: function (name, locale) {
-    console.log(this.greeting(name, locale));
-  },
-  greeting: function (n, lang) {
     var text;
     if (lang == "fr") {
-      text = "Bon jour, " + n;
+      text = "Bon jour, " + name;
     } else {
-      text = "Hello, " + n;
+      text = "Hello, " + name;
     }
-    return text;
+    console.log(text);
   }
 };
