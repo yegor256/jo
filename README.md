@@ -3,4 +3,7 @@
 It is a simple HTML+JavaScript game, also known as
 [Space Invaders](https://en.wikipedia.org/wiki/Space_Invaders).
 
-It is created to illustrate the _Junior Objects_ book.
+It is created to illustrate the
+[_Junior Objects_](https://www.yegor256.com/junior-objects.html) book.
+
+The system...

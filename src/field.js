@@ -1,4 +1,4 @@
-<!--
+/*
  * The MIT License (MIT)
  *
  * Copyright (c) 2019 Yegor Bugayenko
@@ -20,17 +20,22 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <link type='text/css' href='css/main.css' rel='stylesheet'/>
-    <script src='src/field.js'></script>
-    <title>jo</title>
-  </head>
-  <body onload="field.init(document);">
-    <section id="field">
-      <div id="laser" style="position:absolute;bottom:0;">+++</div>
-    </section>
-  </body>
-</html>
+ */
+
+var field = {
+  init: function (doc) {
+    doc.onkeydown = function (evt) {
+      if (evt.keyCode === 37) {
+        field.move_laser(-15);
+      }
+      if (evt.keyCode === 39) {
+        field.move_laser(+15);
+      }
+    };
+  },
+  move_laser: function (dx) {
+    var div = document.getElementById('laser');
+    var rect = div.getBoundingClientRect();
+    div.style.left = rect.left + dx + 'px';
+  }
+};
