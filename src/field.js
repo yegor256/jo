@@ -24,14 +24,17 @@
 
 var field = {
   init: function (doc) {
-    doc.onkeydown = function (evt) {
-      if (evt.keyCode === 37) {
-        field.move_laser(-15);
+    doc.addEventListener(
+      'keydown',
+      function (evt) {
+        if (evt.keyCode === 37) {
+          field.move_laser(-15);
+        }
+        if (evt.keyCode === 39) {
+          field.move_laser(+15);
+        }
       }
-      if (evt.keyCode === 39) {
-        field.move_laser(+15);
-      }
-    };
+    );
   },
   move_laser: function (dx) {
     var div = document.getElementById('laser');
