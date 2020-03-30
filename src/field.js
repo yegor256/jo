@@ -28,16 +28,16 @@ var field = {
       'keydown',
       function (evt) {
         if (evt.keyCode === 37) {
-          field.move_laser(-15);
+          field.move_laser(doc, -15);
         }
         if (evt.keyCode === 39) {
-          field.move_laser(+15);
+          field.move_laser(doc, +15);
         }
       }
     );
   },
-  move_laser: function (dx) {
-    var div = document.getElementById('laser');
+  move_laser: function (doc, dx) {
+    var div = doc.getElementById('laser');
     var rect = div.getBoundingClientRect();
     div.style.left = rect.left + dx + 'px';
   }
