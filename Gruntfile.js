@@ -4,7 +4,6 @@ module.exports = function(grunt) {
     clean: ['coverage'],
     karma: {
       unit: {
-        basePath: '.',
         options: {
           files: ['test/**/*.js', 'src/**/*.js'],
         },
