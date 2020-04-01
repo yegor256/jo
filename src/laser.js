@@ -34,10 +34,14 @@
 function laser(d) {
   return {
     doc: d,
-    move: function(dx) {
+    x: function() {
       const div = this.doc.getElementById('laser');
       const rect = div.getBoundingClientRect();
-      div.style.left = rect.left + dx + 'px';
+      return rect.left;
+    },
+    move: function(dx) {
+      const div = this.doc.getElementById('laser');
+      div.style.left = this.x() + dx + 'px';
     },
     init: function() {
       this.doc.addEventListener('keydown', function(evt) {

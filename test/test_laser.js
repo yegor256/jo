@@ -28,20 +28,18 @@ describe('laser', function() {
       '<div style="left:100px;position:absolute;" id="laser">xxx</div>';
   });
   it('moves itself left', function() {
-    laser(document).move(+10);
-    const div = document.getElementById('laser');
-    const rect = div.getBoundingClientRect();
-    assert.equal(110, rect.left);
+    const lz = laser(document);
+    lz.move(+10);
+    assert.equal(110, lz.x());
   });
   it('connects itself to the DOM', function() {
-    laser(document).init();
+    const lz = laser(document);
+    lz.init();
     [39, 37, 37, 37].forEach(function(k) {
       document.dispatchEvent(new Event('keydown', {keyCode: k}));
     });
     setTimeout(function() {
-      const div = document.getElementById('laser');
-      const rect = div.getBoundingClientRect();
-      assert.equal(70, rect.left);
+      assert.equal(70, lz.x());
       done();
     }, 1000);
   });
