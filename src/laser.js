@@ -34,10 +34,11 @@
 function laser(d) {
   return {
     doc: d,
+    div: function() {
+      return this.doc.getElementById('laser');
+    },
     x: function() {
-      const div = this.doc.getElementById('laser');
-      const rect = div.getBoundingClientRect();
-      return rect.left;
+      return this.div().getBoundingClientRect().left;
     },
     move: function(dx) {
       const div = this.doc.getElementById('laser');
