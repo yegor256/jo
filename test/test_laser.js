@@ -35,13 +35,13 @@ describe('laser', function() {
   });
   it('connects itself to the DOM', function() {
     laser(document).init();
-    document.dispatchEvent(new Event('keydown', {keyCode: 39}));
-    document.dispatchEvent(new Event('keydown', {keyCode: 37}));
-    document.dispatchEvent(new Event('keydown', {keyCode: 37}));
+    [39, 37, 37, 37].forEach(function(k) {
+      document.dispatchEvent(new Event('keydown', {keyCode: k}));
+    });
     setTimeout(function() {
       const div = document.getElementById('laser');
       const rect = div.getBoundingClientRect();
-      expect(rect.left).to.equal(85);
+      expect(rect.left).to.equal(70);
       done();
     }, 1000);
   });
