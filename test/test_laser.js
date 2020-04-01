@@ -25,7 +25,7 @@
 describe('laser', function() {
   beforeEach(function() {
     document.body.innerHTML =
-      '<div style="left:100px;position:absolute;" id="laser">x</div>';
+      '<div style="left:100px;position:absolute;" id="laser">xxx</div>';
   });
   it('moves itself left', function() {
     laser(document).move(+10);
