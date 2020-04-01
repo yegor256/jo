@@ -18,17 +18,15 @@ module.exports = function(grunt) {
           'karma-mocha-reporter',
         ],
         coverageReporter: {
-          type: 'html',
-          dir: 'coverage/',
           subdir: function(browser) {
             return browser.toLowerCase().split(/[ /-]/)[0];
           },
           check: {
             global: {
+              branches: 50,
               lines: 60,
               statements: 70,
               functions: 100,
-              branches: 50,
             },
           },
         },
@@ -37,9 +35,7 @@ module.exports = function(grunt) {
         singleRun: true,
         port: grunt.option('port') || 9876,
         colors: !grunt.option('monochrome'),
-        logLevel: 'INFO',
         browsers: ['FirefoxHeadless'],
-        autoWatch: false,
       },
     },
     eslint: {
