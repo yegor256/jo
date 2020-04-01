@@ -22,12 +22,19 @@
  * SOFTWARE.
  */
 
-function field (d) {
-  return {
-    doc: d,
-    laser: laser(d),
-    init: function () {
-      this.laser.init();
-    }
-  };
-}
+describe('laser', function() {
+  it('moves itself left', function() {
+    document.body.innerHTML = '<div style="left:55px;position:absolute;" id="laser">x</div>'
+    laser = laser(document);
+    laser.move(+10);
+    var div = document.getElementById('laser');
+    var rect = div.getBoundingClientRect();
+    expect(rect.left).to.equal(65);
+  });
+  // mocha.it('moves itself right', function() {
+  //   document.body.innerHTML = '<div style="left:30px;position:absolute;" id="laser">x</div>'
+  //   laser = laser(document);
+  //   laser.move(-10);
+  //   chai.expect($('div').position().left).to.equal(20);
+  // });
+});
