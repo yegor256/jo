@@ -22,12 +22,21 @@
  * SOFTWARE.
  */
 
-function field (d) {
+/* exported field */
+
+/**
+ * The constructor of the laser.
+ *
+ * @constructor
+ * @param {Document} d - The DOM document to encapsulate
+ * @return {Field} The field object
+ */
+function field(d) {
   return {
     doc: d,
     laser: laser(d),
-    init: function () {
+    init: function() {
       this.laser.init();
-    }
+    },
   };
 }

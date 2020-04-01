@@ -9,14 +9,14 @@ module.exports = function(grunt) {
           files: ['test/**/*.js', 'src/**/*.js'],
         },
         preprocessors: {
-          'src/**/*.js': ['coverage']
+          'src/**/*.js': ['coverage'],
         },
         plugins: [
           'karma-mocha',
           'karma-chai',
           'karma-coverage',
           'karma-firefox-launcher',
-          'karma-mocha-reporter'
+          'karma-mocha-reporter',
         ],
         coverageReporter: {
           type: 'html',
@@ -29,8 +29,8 @@ module.exports = function(grunt) {
               lines: 60,
               statements: 70,
               functions: 100,
-              branches: 50
-            }
+              branches: 50,
+            },
           },
         },
         frameworks: ['mocha', 'chai'],
@@ -40,8 +40,8 @@ module.exports = function(grunt) {
         colors: !grunt.option('monochrome'),
         logLevel: 'INFO',
         browsers: ['FirefoxHeadless'],
-        autoWatch: false
-      }
+        autoWatch: false,
+      },
     },
     eslint: {
       options: {

@@ -22,32 +22,9 @@
  * SOFTWARE.
  */
 
-/* exported laser */
-
-/**
- * The constructor of the laser.
- *
- * @constructor
- * @param {Document} d - The DOM document to encapsulate
- * @return {Laser} The laser object
- */
-function laser(d) {
-  return {
-    doc: d,
-    move: function(dx) {
-      const div = this.doc.getElementById('laser');
-      const rect = div.getBoundingClientRect();
-      div.style.left = rect.left + dx + 'px';
-    },
-    init: function() {
-      this.doc.addEventListener('keydown', function(evt) {
-        if (evt.keyCode === 37) {
-          this.move(-15);
-        }
-        if (evt.keyCode === 39) {
-          this.move(+15);
-        }
-      }.bind(this));
-    },
-  };
-}
+describe('field', function() {
+  it('connects itself to the DOM', function() {
+    document.body.innerHTML = '<html/>';
+    field(document).init();
+  });
+});

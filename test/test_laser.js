@@ -23,18 +23,26 @@
  */
 
 describe('laser', function() {
-  it('moves itself left', function() {
-    document.body.innerHTML = '<div style="left:55px;position:absolute;" id="laser">x</div>'
-    laser = laser(document);
-    laser.move(+10);
-    var div = document.getElementById('laser');
-    var rect = div.getBoundingClientRect();
-    expect(rect.left).to.equal(65);
+  beforeEach(function() {
+    document.body.innerHTML =
+      '<div style="left:100px;position:absolute;" id="laser">x</div>';
   });
-  // mocha.it('moves itself right', function() {
-  //   document.body.innerHTML = '<div style="left:30px;position:absolute;" id="laser">x</div>'
-  //   laser = laser(document);
-  //   laser.move(-10);
-  //   chai.expect($('div').position().left).to.equal(20);
-  // });
+  it('moves itself left', function() {
+    laser(document).move(+10);
+    const div = document.getElementById('laser');
+    const rect = div.getBoundingClientRect();
+    expect(rect.left).to.equal(110);
+  });
+  it('connects itself to the DOM', function() {
+    laser(document).init();
+    document.dispatchEvent(new Event('keydown', {keyCode: 39}));
+    document.dispatchEvent(new Event('keydown', {keyCode: 37}));
+    document.dispatchEvent(new Event('keydown', {keyCode: 37}));
+    setTimeout(function() {
+      const div = document.getElementById('laser');
+      const rect = div.getBoundingClientRect();
+      expect(rect.left).to.equal(85);
+      done();
+    }, 1000);
+  });
 });
