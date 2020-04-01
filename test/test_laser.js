@@ -31,7 +31,7 @@ describe('laser', function() {
     laser(document).move(+10);
     const div = document.getElementById('laser');
     const rect = div.getBoundingClientRect();
-    expect(rect.left).to.equal(110);
+    assert.equal(110, rect.left);
   });
   it('connects itself to the DOM', function() {
     laser(document).init();
@@ -41,7 +41,7 @@ describe('laser', function() {
     setTimeout(function() {
       const div = document.getElementById('laser');
       const rect = div.getBoundingClientRect();
-      expect(rect.left).to.equal(70);
+      assert.equal(70, rect.left);
       done();
     }, 1000);
   });

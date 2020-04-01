@@ -12,8 +12,8 @@ module.exports = function(grunt) {
           'src/**/*.js': ['coverage'],
         },
         plugins: [
+          'karma-assert',
           'karma-mocha',
-          'karma-chai',
           'karma-coverage',
           'karma-firefox-launcher',
           'karma-mocha-reporter',
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
             },
           },
         },
-        frameworks: ['mocha', 'chai'],
+        frameworks: ['assert', 'mocha'],
         reporters: ['progress', 'mocha', 'coverage'],
         singleRun: true,
         port: grunt.option('port') || 9876,
