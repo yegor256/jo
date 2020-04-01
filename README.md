@@ -6,4 +6,4 @@ It is a simple HTML+JavaScript game, also known as
 It is created to illustrate the
 [_Junior Objects_](https://www.yegor256.com/junior-objects.html) book.
 
-The system...
+[Click here](https://yegor256.github.io/jo/) to play it.
