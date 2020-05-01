@@ -41,8 +41,7 @@ function laser(d) {
       return this.div().getBoundingClientRect().left;
     },
     move: function(dx) {
-      const div = this.doc.getElementById('laser');
-      div.style.left = this.x() + dx + 'px';
+      this.div().style.left = this.x() + dx + 'px';
     },
     init: function() {
       this.doc.addEventListener('keydown', function(evt) {
