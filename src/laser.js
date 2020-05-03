@@ -35,6 +35,7 @@ function laser(w) {
   return {
     window: w,
     bullet: bullet(w),
+    loaded: true,
     div: function() {
       return this.window.document.getElementById('laser');
     },
@@ -45,9 +46,13 @@ function laser(w) {
       this.div().style.left = this.x() + dx + 'px';
     },
     shoot: function() {
-      if (!this.bullet.flying()) {
-        this.bullet.launch(this.x());
+      if (this.loaded) {
+        this.loaded = false;
+        this.bullet.launch(this, this.x());
       }
+    },
+    hit: function() {
+      this.loaded = true;
     },
     init: function() {
       this.window.addEventListener('keydown', function(evt) {

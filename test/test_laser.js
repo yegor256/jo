@@ -28,6 +28,11 @@ describe('laser', function() {
     lz.move(+10);
     assert.equal(110, lz.x());
   });
+  it('fires a bullet', function() {
+    const lz = laser(window);
+    lz.shoot();
+    lz.shoot();
+  });
   it('connects itself to the DOM', function(done) {
     const lz = laser(window);
     lz.init();

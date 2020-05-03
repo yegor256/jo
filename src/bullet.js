@@ -35,26 +35,24 @@
 function bullet(w) {
   return {
     window: w,
-    launch: function(x) {
+    launch: function(laser, x, dy = -5) {
       const div = this.window.document.createElement('div');
       div.id = 'bullet';
       div.style.left = x + 'px';
       this.window.document.getElementById('field').appendChild(div);
-      this.fly(-5);
+      this.fly(laser, dy);
     },
-    flying: function() {
-      return this.window.document.getElementById('bullet') != null;
-    },
-    fly: function(dy) {
+    fly: function(laser, dy) {
       const div = this.window.document.getElementById('bullet');
       const rect = div.getBoundingClientRect();
       const y = rect.top + dy;
       if (y < 0) {
         div.remove();
+        laser.hit();
       } else {
         div.style.top = y + 'px';
         this.window.setTimeout(function() {
-          this.fly(dy);
+          this.fly(laser, dy);
         }.bind(this), 10);
       }
     },

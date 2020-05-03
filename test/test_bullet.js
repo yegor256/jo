@@ -25,12 +25,18 @@
 describe('bullet', function() {
   it('connects itself to the DOM', function(done) {
     const b = bullet(window);
-    b.launch(0);
+    let observed = false;
+    const laser = {
+      hit: function() {
+        observed = true;
+      },
+    };
+    b.launch(laser, 0, -100);
     const div = document.getElementById('bullet');
     const rect = div.getBoundingClientRect();
     const before = rect.top;
     setTimeout(function() {
-      assert.ok(b.flying());
+      assert.ok(observed);
       assert.notEqual(before, div.getBoundingClientRect().top);
       done();
     }, 100);
