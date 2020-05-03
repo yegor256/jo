@@ -42,7 +42,7 @@ function army(w) {
       const i = invader(this.window, this.invaders++);
       i.launch();
       this.window.setTimeout(function() {
-        this.launch(delay - 1);
+        this.launch(delay - 50);
       }.bind(this), delay);
     },
   };
