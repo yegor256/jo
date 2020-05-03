@@ -28,14 +28,14 @@
  * The constructor of the laser.
  *
  * @constructor
- * @param {Document} d - The DOM document to encapsulate
+ * @param {Document} w - The DOM window to encapsulate
  * @return {Laser} The laser object
  */
-function laser(d) {
+function laser(w) {
   return {
-    doc: d,
+    window: w,
     div: function() {
-      return this.doc.getElementById('laser');
+      return this.window.document.getElementById('laser');
     },
     x: function() {
       return this.div().getBoundingClientRect().left;
@@ -44,7 +44,7 @@ function laser(d) {
       this.div().style.left = this.x() + dx + 'px';
     },
     init: function() {
-      this.doc.addEventListener('keydown', function(evt) {
+      this.window.addEventListener('keydown', function(evt) {
         if (evt.keyCode === 37) {
           this.move(-15);
         }

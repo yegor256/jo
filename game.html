@@ -25,13 +25,15 @@
 <html>
   <head>
     <link type='text/css' href='css/main.css' rel='stylesheet'/>
-    <script src='src/field.js'></script>
+    <script src='src/invader.js'></script>
+    <script src='src/army.js'></script>
     <script src='src/laser.js'></script>
+    <script src='src/field.js'></script>
     <title>jo</title>
   </head>
-  <body onload="field(document).init();">
+  <body onload="field(window).init();">
     <section id="field">
-      <div id="laser" style="position:absolute;bottom:0;">+++</div>
+      <div id="laser"></div>
     </section>
   </body>
 </html>

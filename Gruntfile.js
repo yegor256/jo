@@ -7,13 +7,21 @@ module.exports = function(grunt) {
         options: {
           files: ['test/**/*.js', 'src/**/*.js'],
         },
+        files: [
+          {
+            pattern: 'fixtures/**/*.html',
+          },
+        ],
         preprocessors: {
           'src/**/*.js': ['coverage'],
+          'fixtures/**/*.html': ['html2js'],
         },
         plugins: [
           'karma-assert',
           'karma-mocha',
+          'karma-fixture',
           'karma-coverage',
+          'karma-html2js-preprocessor',
           'karma-firefox-launcher',
           'karma-mocha-reporter',
         ],
@@ -26,11 +34,11 @@ module.exports = function(grunt) {
               branches: 50,
               lines: 60,
               statements: 70,
-              functions: 100,
+              functions: 90,
             },
           },
         },
-        frameworks: ['assert', 'mocha'],
+        frameworks: ['assert', 'mocha', 'fixture'],
         reporters: ['progress', 'mocha', 'coverage'],
         singleRun: true,
         port: grunt.option('port') || 9876,

@@ -22,21 +22,22 @@
  * SOFTWARE.
  */
 
-describe('laser', function() {
-  it('moves itself left', function() {
-    const lz = laser(window);
-    lz.move(+10);
-    assert.equal(110, lz.x());
+beforeEach(function() {
+  this.listeners = [];
+  this.before = window.addEventListener;
+  window.addEventListener = function(...args) {
+    this.listeners.push(args);
+    this.before.apply(null, args);
+  }.bind(this);
+});
+
+afterEach(function() {
+  let id = window.setTimeout(function() {}, 0);
+  while (id--) {
+    window.clearTimeout(id);
+  }
+  this.listeners.forEach(function(listener) {
+    window.removeEventListener.apply(null, listener);
   });
-  it('connects itself to the DOM', function(done) {
-    const lz = laser(window);
-    lz.init();
-    [39, 37, 37, 37].forEach(function(k) {
-      window.dispatchEvent(new KeyboardEvent('keydown', {keyCode: k}));
-    });
-    setTimeout(function() {
-      assert.equal(70, lz.x());
-      done();
-    }, 100);
-  });
+  window.addEventListener = this.before;
 });

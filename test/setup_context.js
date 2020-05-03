@@ -22,21 +22,15 @@
  * SOFTWARE.
  */
 
-describe('laser', function() {
-  it('moves itself left', function() {
-    const lz = laser(window);
-    lz.move(+10);
-    assert.equal(110, lz.x());
-  });
-  it('connects itself to the DOM', function(done) {
-    const lz = laser(window);
-    lz.init();
-    [39, 37, 37, 37].forEach(function(k) {
-      window.dispatchEvent(new KeyboardEvent('keydown', {keyCode: k}));
-    });
-    setTimeout(function() {
-      assert.equal(70, lz.x());
-      done();
-    }, 100);
-  });
+before(function() {
+  fixture.setBase('fixtures');
+});
+
+beforeEach(function() {
+  document.body.outerHTML =
+    fixture.load('context.html').map((f) => f.outerHTML).join('');
+});
+
+afterEach(function() {
+  fixture.cleanup();
 });

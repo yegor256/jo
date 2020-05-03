@@ -24,7 +24,6 @@
 
 describe('field', function() {
   it('connects itself to the DOM', function() {
-    document.body.innerHTML = '<html/>';
-    field(document).init();
+    field(window).init();
   });
 });
