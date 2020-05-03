@@ -30,6 +30,7 @@ describe('bullet', function() {
     const rect = div.getBoundingClientRect();
     const before = rect.top;
     setTimeout(function() {
+      assert.ok(b.flying());
       assert.notEqual(before, div.getBoundingClientRect().top);
       done();
     }, 100);

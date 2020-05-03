@@ -40,7 +40,10 @@ function bullet(w) {
       div.id = 'bullet';
       div.style.left = x + 'px';
       this.window.document.getElementById('field').appendChild(div);
-      this.fly(-2);
+      this.fly(-5);
+    },
+    flying: function() {
+      return this.window.document.getElementById('bullet') != null;
     },
     fly: function(dy) {
       const div = this.window.document.getElementById('bullet');
