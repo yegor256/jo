@@ -22,43 +22,38 @@
  * SOFTWARE.
  */
 
-/* exported invader */
+/* exported bullet */
 
 /**
- * The constructor of the invader.
+ * The constructor of the bullet.
  *
  * @constructor
  * @param {Document} w - The DOM window to encapsulate
- * @param {Integer} i - The ID
- * @param {Float} v - The velocity
- * @param {Float} a - The acceleration
- * @return {Invader} The invader object
+ * @param {Integer} x - The X coordinate of the place to fire from
+ * @return {Bullet} The invader object
  */
-function invader(w, i) {
+function bullet(w) {
   return {
     window: w,
-    id: 'invader' + i,
-    launch: function() {
+    launch: function(x) {
       const div = this.window.document.createElement('div');
-      div.id = this.id;
-      div.className = 'invader';
-      this.window.document.getElementById('field').appendChild(div);
-      this.attack(40, 2);
-    },
-    attack: function(v, dx) {
-      const div = this.window.document.getElementById(this.id);
-      const rect = div.getBoundingClientRect();
-      const x = rect.left + dx;
+      div.id = 'bullet';
       div.style.left = x + 'px';
-      this.window.setTimeout(function() {
-        const width = div.parentElement.getBoundingClientRect().width;
-        if (x > width - rect.width || x < 0) {
-          div.style.top = rect.top + rect.height * 2 + 'px';
-          this.attack(v - 1, -dx);
-        } else {
-          this.attack(v, dx);
-        }
-      }.bind(this), v);
+      this.window.document.getElementById('field').appendChild(div);
+      this.fly(-2);
+    },
+    fly: function(dy) {
+      const div = this.window.document.getElementById('bullet');
+      const rect = div.getBoundingClientRect();
+      const y = rect.top + dy;
+      if (y < 0) {
+        div.remove();
+      } else {
+        div.style.top = y + 'px';
+        this.window.setTimeout(function() {
+          this.fly(dy);
+        }.bind(this), 10);
+      }
     },
   };
 }

@@ -43,6 +43,10 @@ function laser(w) {
     move: function(dx) {
       this.div().style.left = this.x() + dx + 'px';
     },
+    shoot: function() {
+      const b = bullet(this.window);
+      b.launch(this.x());
+    },
     init: function() {
       this.window.addEventListener('keydown', function(evt) {
         if (evt.keyCode === 37) {
@@ -50,6 +54,9 @@ function laser(w) {
         }
         if (evt.keyCode === 39) {
           this.move(+15);
+        }
+        if (evt.keyCode === 32) {
+          this.shoot();
         }
       }.bind(this));
     },

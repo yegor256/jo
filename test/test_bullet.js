@@ -22,28 +22,16 @@
  * SOFTWARE.
  */
 
-/* exported army */
-
-/**
- * The constructor of the army.
- *
- * @constructor
- * @param {Document} w - The DOM window to encapsulate
- * @return {Army} The army object
- */
-function army(w) {
-  return {
-    window: w,
-    invaders: 0,
-    init: function() {
-      this.launch(10000);
-    },
-    launch: function(delay) {
-      const i = invader(this.window, this.invaders++);
-      i.launch();
-      this.window.setTimeout(function() {
-        this.launch(delay - 50);
-      }.bind(this), delay);
-    },
-  };
-}
+describe('bullet', function() {
+  it('connects itself to the DOM', function(done) {
+    const b = bullet(window);
+    b.launch(0);
+    const div = document.getElementById('bullet');
+    const rect = div.getBoundingClientRect();
+    const before = rect.top;
+    setTimeout(function() {
+      assert.notEqual(before, div.getBoundingClientRect().top);
+      done();
+    }, 100);
+  });
+});
