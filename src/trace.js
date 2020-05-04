@@ -22,13 +22,22 @@
  * SOFTWARE.
  */
 
-describe('army', function() {
-  it('connects itself to the DOM', function(done) {
-    const a = army(window);
-    a.init(10);
-    setTimeout(function() {
-      assert.ok(div(window, 'invader0').rect().left > 0);
-      done();
-    }, 100);
-  });
-});
+/* exported trace */
+
+/**
+ * The constructor of the trace.
+ *
+ * @constructor
+ * @return {Patch} The patch object
+ */
+function trace() {
+  return {
+    moved: function(div, vector) {
+      const rect = div.rect();
+      console.log('The div #' + div.id + ' moved to ' + rect.left +
+        'x' + rect.top +
+        ' with (' + vector.dx + ', ' + vector.dy + ')');
+      return vector;
+    },
+  };
+}

@@ -22,13 +22,30 @@
  * SOFTWARE.
  */
 
-describe('army', function() {
-  it('connects itself to the DOM', function(done) {
-    const a = army(window);
-    a.init(10);
-    setTimeout(function() {
-      assert.ok(div(window, 'invader0').rect().left > 0);
-      done();
-    }, 100);
-  });
-});
+/* exported outside */
+
+/**
+ * The constructor of the outside.
+ *
+ * @constructor
+ * @param {Function} a - The action to call when hit
+ * @return {Patch} The patch object
+ */
+function outside(a) {
+  return {
+    action: a,
+    moved: function(div, vector) {
+      const element = div.element();
+      const box = element.parentElement.getBoundingClientRect();
+      const rect = div.rect();
+      let v = vector;
+      if (rect.left > box.width - rect.width || rect.left < 0) {
+        v = a(div, v);
+      }
+      if (rect.top > box.height - rect.height || rect.top < 0) {
+        v = a(div, v);
+      }
+      return v;
+    },
+  };
+}

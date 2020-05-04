@@ -22,13 +22,15 @@
  * SOFTWARE.
  */
 
-describe('army', function() {
-  it('connects itself to the DOM', function(done) {
-    const a = army(window);
-    a.init(10);
-    setTimeout(function() {
-      assert.ok(div(window, 'invader0').rect().left > 0);
-      done();
-    }, 100);
+describe('div', function() {
+  it('moves left and right', function() {
+    const d = div(window, 'laser');
+    const rect = d.rect();
+    const x = rect.left;
+    const y = rect.top;
+    d.move(vec(10, -20));
+    const after = d.rect();
+    assert.equal(x + 10, after.left);
+    assert.equal(y - 20, after.top);
   });
 });

@@ -43,21 +43,18 @@ function invader(w, i) {
       div.id = this.id;
       div.className = 'invader';
       this.window.document.getElementById('field').appendChild(div);
-      this.attack(40, 2);
+      this.attack(20, 2);
     },
     attack: function(v, dx) {
-      const div = this.window.document.getElementById(this.id);
-      const rect = div.getBoundingClientRect();
-      const x = rect.left + dx;
-      div.style.left = x + 'px';
+      const after = patched(
+          div(this.window, this.id),
+          outside(function(div, vector) {
+            div.move(vec(0, 20));
+            return vec(-vector.dx, vector.dy);
+          })
+      ).move(vec(dx, 0));
       this.window.setTimeout(function() {
-        const width = div.parentElement.getBoundingClientRect().width;
-        if (x > width - rect.width || x < 0) {
-          div.style.top = rect.top + rect.height * 2 + 'px';
-          this.attack(v - 1, -dx);
-        } else {
-          this.attack(v, dx);
-        }
+        this.attack(v, after.dx);
       }.bind(this), v);
     },
   };

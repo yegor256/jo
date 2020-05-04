@@ -36,19 +36,20 @@ function laser(w) {
     window: w,
     bullet: bullet(w),
     loaded: true,
-    div: function() {
-      return this.window.document.getElementById('laser');
-    },
-    x: function() {
-      return this.div().getBoundingClientRect().left;
-    },
     move: function(dx) {
-      this.div().style.left = this.x() + dx + 'px';
+      patched(
+          div(this.window, 'laser'),
+          outside(function(div, vector) {
+            return div.move(vec(-vector.dx, vector.dy));
+          })
+      ).move(vec(dx, 0));
     },
     shoot: function() {
       if (this.loaded) {
         this.loaded = false;
-        this.bullet.launch(this, this.x());
+        const div = this.window.document.getElementById('laser');
+        const x = div.getBoundingClientRect().left;
+        this.bullet.launch(this, x);
       }
     },
     hit: function() {

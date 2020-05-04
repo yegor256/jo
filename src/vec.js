@@ -22,13 +22,22 @@
  * SOFTWARE.
  */
 
-describe('army', function() {
-  it('connects itself to the DOM', function(done) {
-    const a = army(window);
-    a.init(10);
-    setTimeout(function() {
-      assert.ok(div(window, 'invader0').rect().left > 0);
-      done();
-    }, 100);
-  });
-});
+/* exported vec */
+
+/**
+ * The constructor of the vector.
+ *
+ * @constructor
+ * @param {Integer} x - The DX
+ * @param {Integer} y - The DY
+ * @return {Vector} The vector object
+ */
+function vec(x, y) {
+  return {
+    dx: x,
+    dy: y,
+    zero: function() {
+      return this.dx === 0 && this.dy === 0;
+    },
+  };
+}

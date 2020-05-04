@@ -26,11 +26,10 @@ describe('invader', function() {
   it('connects itself to the DOM', function(done) {
     const i = invader(window, 0);
     i.launch();
-    const div = document.getElementById('invader0');
-    const rect = div.getBoundingClientRect();
-    const before = rect.left;
+    const d = div(window, 'invader0');
+    const before = d.rect().left;
     setTimeout(function() {
-      assert.notEqual(before, div.getBoundingClientRect().left);
+      assert.notEqual(before, d.rect().left);
       done();
     }, 100);
   });

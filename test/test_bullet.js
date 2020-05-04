@@ -24,20 +24,16 @@
 
 describe('bullet', function() {
   it('connects itself to the DOM', function(done) {
-    const b = bullet(window);
+    const b = bullet(window, 1);
     let observed = false;
     const laser = {
       hit: function() {
         observed = true;
       },
     };
-    b.launch(laser, 0, -100);
-    const div = document.getElementById('bullet');
-    const rect = div.getBoundingClientRect();
-    const before = rect.top;
+    b.launch(laser, 10, -200);
     setTimeout(function() {
-      assert.ok(observed);
-      assert.notEqual(before, div.getBoundingClientRect().top);
+      assert.ok(observed, 'The bulled didn\'t fly out off the screen');
       done();
     }, 100);
   });

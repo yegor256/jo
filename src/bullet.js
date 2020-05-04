@@ -29,12 +29,13 @@
  *
  * @constructor
  * @param {Document} w - The DOM window to encapsulate
- * @param {Integer} x - The X coordinate of the place to fire from
+ * @param {Integer} v - The velocity to fly with
  * @return {Bullet} The invader object
  */
-function bullet(w) {
+function bullet(w, v = 10) {
   return {
     window: w,
+    velocity: v,
     launch: function(laser, x, dy = -5) {
       const div = this.window.document.createElement('div');
       div.id = 'bullet';
@@ -43,17 +44,19 @@ function bullet(w) {
       this.fly(laser, dy);
     },
     fly: function(laser, dy) {
-      const div = this.window.document.getElementById('bullet');
-      const rect = div.getBoundingClientRect();
-      const y = rect.top + dy;
-      if (y < 0) {
-        div.remove();
-        laser.hit();
-      } else {
-        div.style.top = y + 'px';
+      const after = patched(
+          div(this.window, 'bullet'),
+          outside(function(div, vector) {
+            laser.hit();
+            return vec(0, 0);
+          }),
+          trace(),
+          grave()
+      ).move(vec(0, dy));
+      if (!after.zero()) {
         this.window.setTimeout(function() {
           this.fly(laser, dy);
-        }.bind(this), 10);
+        }.bind(this), this.velocity);
       }
     },
   };

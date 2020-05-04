@@ -22,13 +22,21 @@
  * SOFTWARE.
  */
 
-describe('army', function() {
-  it('connects itself to the DOM', function(done) {
-    const a = army(window);
-    a.init(10);
-    setTimeout(function() {
-      assert.ok(div(window, 'invader0').rect().left > 0);
-      done();
-    }, 100);
-  });
-});
+/* exported grave */
+
+/**
+ * The constructor of the grave.
+ *
+ * @constructor
+ * @return {Patch} The patch object
+ */
+function grave() {
+  return {
+    moved: function(div, vector) {
+      if (vector.dx === 0 && vector.dy === 0) {
+        div.element().remove();
+      }
+      return vector;
+    },
+  };
+}

@@ -35,15 +35,15 @@ function army(w) {
   return {
     window: w,
     invaders: 0,
-    init: function() {
-      this.launch(10000);
+    init: function(v = 10000) {
+      this.launch(v);
     },
-    launch: function(delay) {
+    launch: function(v) {
       const i = invader(this.window, this.invaders++);
       i.launch();
       this.window.setTimeout(function() {
-        this.launch(delay - 50);
-      }.bind(this), delay);
+        this.launch(v - 50);
+      }.bind(this), v);
     },
   };
 }
