@@ -24,7 +24,9 @@
 
 describe('vec', function() {
   it('checks itself for zero', function() {
-    const v = vec(0, 0);
-    assert.ok(v.zero());
+    const v1 = vec(0, 0);
+    assert.ok(v1.zero());
+    const v2 = vec(1, 0);
+    assert.ok(!v2.zero());
   });
 });
