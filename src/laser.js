@@ -41,7 +41,8 @@ function laser(w) {
           div(this.window, 'laser'),
           outside(function(div, vector) {
             return div.move(vec(-vector.dx, vector.dy));
-          })
+          }),
+          trace()
       ).move(vec(dx, 0));
     },
     shoot: function() {

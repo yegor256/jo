@@ -51,7 +51,8 @@ function invader(w, i) {
           outside(function(div, vector) {
             div.move(vec(0, 20));
             return vec(-vector.dx, vector.dy);
-          })
+          }),
+          trace()
       ).move(vec(dx, 0));
       this.window.setTimeout(function() {
         this.attack(v, after.dx);
