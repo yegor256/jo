@@ -37,10 +37,10 @@ function bullet(w, v = 10) {
     window: w,
     velocity: v,
     launch: function(laser, x, dy = -5) {
-      const div = this.window.document.createElement('div');
-      div.id = 'bullet';
-      div.style.left = x + 'px';
-      this.window.document.getElementById('field').appendChild(div);
+      const e = this.window.document.createElement('div');
+      e.id = 'bullet';
+      e.style.left = x + 'px';
+      this.window.document.getElementById('field').appendChild(e);
       this.fly(laser, dy);
     },
     fly: function(laser, dy) {

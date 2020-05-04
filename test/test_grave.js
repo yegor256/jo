@@ -22,40 +22,13 @@
  * SOFTWARE.
  */
 
-/* exported invader */
-
-/**
- * The constructor of the invader.
- *
- * @constructor
- * @param {Document} w - The DOM window to encapsulate
- * @param {Integer} i - The ID
- * @param {Float} v - The velocity
- * @param {Float} a - The acceleration
- * @return {Invader} The invader object
- */
-function invader(w, i) {
-  return {
-    window: w,
-    id: 'invader' + i,
-    launch: function() {
-      const e = this.window.document.createElement('div');
-      e.id = this.id;
-      e.className = 'invader';
-      this.window.document.getElementById('field').appendChild(e);
-      this.attack(20, 2);
-    },
-    attack: function(v, dx) {
-      const after = patched(
-          div(this.window, this.id),
-          outside(function(div, vector) {
-            div.move(vec(0, 20));
-            return vec(-vector.dx, vector.dy);
-          })
-      ).move(vec(dx, 0));
-      this.window.setTimeout(function() {
-        this.attack(v, after.dx);
-      }.bind(this), v);
-    },
-  };
-}
+describe('grave', function() {
+  it('destroys the div', function() {
+    const e = document.createElement('div');
+    e.id = 'bullet';
+    document.getElementById('field').appendChild(e);
+    const d = div(window, 'bullet');
+    grave().moved(d, vec(0, 0));
+    assert.ok(document.getElementById('bullet') == null);
+  });
+});
