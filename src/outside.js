@@ -39,10 +39,8 @@ function outside(a) {
       const box = element.parentElement.getBoundingClientRect();
       const rect = div.rect();
       let v = vector;
-      if (rect.left > box.width - rect.width || rect.left < 0) {
-        v = a(div, v);
-      }
-      if (rect.top > box.height - rect.height || rect.top < 0) {
+      if (rect.left > box.width - rect.width || rect.left < 0 ||
+        rect.top > box.height - rect.height || rect.top < 0) {
         v = a(div, v);
       }
       return v;
