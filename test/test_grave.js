@@ -28,7 +28,7 @@ describe('grave', function() {
     e.id = 'bullet';
     document.getElementById('field').appendChild(e);
     const d = div(window, 'bullet');
-    grave().moved(d, vec(0, 0));
+    grave().moved(d, vector(0, 0));
     assert.ok(document.getElementById('bullet') == null);
   });
 });

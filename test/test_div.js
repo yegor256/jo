@@ -28,7 +28,7 @@ describe('div', function() {
     const rect = d.rect();
     const x = rect.left;
     const y = rect.top;
-    d.move(vec(10, -20));
+    d.move(vector(10, -20));
     const after = d.rect();
     assert.equal(x + 10, after.left);
     assert.equal(y - 20, after.top);

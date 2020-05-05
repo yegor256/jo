@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-/* exported vec */
+/* exported vector */
 
 /**
  * The constructor of the vector.
@@ -32,7 +32,7 @@
  * @param {Integer} y - The DY
  * @return {Vector} The vector object
  */
-function vec(x, y) {
+function vector(x, y) {
   return {
     dx: x,
     dy: y,

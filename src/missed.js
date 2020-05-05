@@ -34,11 +34,11 @@
 function missed(lz) {
   return {
     laser: lz,
-    moved: function(div, vector) {
-      if (outside((d, v) => vec(0, 0)).moved(div, vector).dy == 0) {
+    moved: function(div, vec) {
+      if (outside((d, v) => vector(0, 0)).moved(div, vec).dy == 0) {
         lz.missed();
       }
-      return vector;
+      return vec;
     },
   };
 }

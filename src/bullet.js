@@ -47,10 +47,10 @@ function bullet(w, v = 10) {
       const v = patched(
         div(this.window, 'bullet'),
         missed(laser),
-        outside((div, vector) => vec(0, 0)),
+        outside((div, vec) => vector(0, 0)),
         trace(),
         grave()
-      ).move(vec(0, dy));
+      ).move(vector(0, dy));
       if (v.dy != 0) {
         this.window.setTimeout(function() {
           this.fly(laser, dy);

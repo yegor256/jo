@@ -22,11 +22,11 @@
  * SOFTWARE.
  */
 
-describe('vec', function() {
+describe('vector', function() {
   it('checks itself for zero', function() {
-    const v1 = vec(0, 0);
+    const v1 = vector(0, 0);
     assert.ok(v1.dx === 0);
-    const v2 = vec(1, 0);
+    const v2 = vector(1, 0);
     assert.ok(v2.dx === 1);
   });
 });

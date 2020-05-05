@@ -39,9 +39,9 @@ function laser(w) {
     move: function(dx) {
       patched(
         div(this.window, 'laser'),
-        outside((d, v) => d.move(vec(-v.dx, v.dy))),
+        outside((d, v) => d.move(vector(-v.dx, v.dy))),
         trace()
-      ).move(vec(dx, 0));
+      ).move(vector(dx, 0));
     },
     shoot: function() {
       if (this.loaded) {

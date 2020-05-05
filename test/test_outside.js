@@ -28,11 +28,11 @@ describe('outside', function() {
     e.id = 'bullet';
     document.getElementById('field').appendChild(e);
     const d = div(window, 'bullet');
-    d.move(vec(-1000, 0));
+    d.move(vector(-1000, 0));
     let observed = false;
     outside(function(div, vector) {
       observed = true;
-    }).moved(d, vec(0, 0));
+    }).moved(d, vector(0, 0));
     assert.ok(observed);
   });
 });

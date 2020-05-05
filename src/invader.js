@@ -48,10 +48,10 @@ function invader(w, i) {
     attack: function(v, dx) {
       const after = patched(
         div(this.window, this.id),
-        outside((div, vector) => div.move(vec(vector.dx, 20))),
-        outside((div, vector) => vec(-vector.dx, vector.dy)),
+        outside((div, vector) => div.move(vector(vector.dx, 20))),
+        outside((div, vector) => vector(-vector.dx, vector.dy)),
         trace()
-      ).move(vec(dx, 0));
+      ).move(vector(dx, 0));
       if (after.dx != 0) {
         this.window.setTimeout(function() {
           this.attack(v, after.dx);

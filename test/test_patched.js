@@ -35,7 +35,7 @@ describe('patched', function() {
         return vector;
       },
     };
-    patched(d, patch).move(vec(1, 1));
+    patched(d, patch).move(vector(1, 1));
     assert.ok(seen);
   });
 });
