@@ -34,9 +34,11 @@ function trace() {
   return {
     moved: function(div, vector) {
       const rect = div.rect();
-      console.log('The div #' + div.id + ' moved to ' + rect.left +
+      console.log(
+        'The div #' + div.id + ' moved to ' + rect.left +
         'x' + rect.top +
-        ' with (' + vector.dx + ', ' + vector.dy + ')');
+        ' with (' + vector.dx + ', ' + vector.dy + ')'
+      );
       return vector;
     },
   };
