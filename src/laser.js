@@ -34,7 +34,7 @@
 function laser(w) {
   return {
     window: w,
-    bullet: bullet(w),
+    bullet: bullet(w, 10, -5),
     loaded: true,
     move: function(dx) {
       patched(
