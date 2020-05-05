@@ -35,7 +35,7 @@ describe('laser', function() {
   });
   it('fires a bullet', function() {
     const lz = laser(window);
-    lz.init();
+    lz.init(army());
     window.dispatchEvent(new KeyboardEvent('keydown', {keyCode: 32}));
     setTimeout(function() {
       assert.equal(100, div(window, 'bullet').rect().left);
@@ -44,7 +44,7 @@ describe('laser', function() {
   });
   it('connects itself to the DOM', function(done) {
     const lz = laser(window);
-    lz.init();
+    lz.init(army());
     [39, 37, 37, 37].forEach(function(k) {
       window.dispatchEvent(new KeyboardEvent('keydown', {keyCode: k}));
     });

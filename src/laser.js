@@ -43,18 +43,18 @@ function laser(w) {
         trace()
       ).move(vector(dx, 0));
     },
-    shoot: function() {
+    shoot: function(army) {
       if (this.loaded) {
         this.loaded = false;
         const div = this.window.document.getElementById('laser');
         const x = div.getBoundingClientRect().left;
-        this.bullet.launch(this, x);
+        this.bullet.launch(this, army, x);
       }
     },
     missed: function() {
       this.loaded = true;
     },
-    init: function() {
+    init: function(army) {
       this.window.addEventListener('keydown', function(evt) {
         if (evt.keyCode === 37) {
           this.move(-15);
@@ -63,7 +63,7 @@ function laser(w) {
           this.move(+15);
         }
         if (evt.keyCode === 32) {
-          this.shoot();
+          this.shoot(army);
         }
       }.bind(this));
     },

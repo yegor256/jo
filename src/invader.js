@@ -38,6 +38,7 @@ function invader(w, i) {
   return {
     window: w,
     id: 'invader' + i,
+    alive: true,
     launch: function() {
       const e = this.window.document.createElement('div');
       e.id = this.id;
@@ -45,17 +46,31 @@ function invader(w, i) {
       this.window.document.getElementById('field').appendChild(e);
       this.attack(20, 2);
     },
+    fire: function(x, y) {
+      const d = div(this.window, this.id);
+      const r = d.rect();
+      let killed = false;
+      if (x < r.left + r.width && x > r.left
+        && y < r.top + r.height && y > r.top) {
+        this.alive = false;
+        killed = true;
+      }
+      return killed;
+    },
     attack: function(v, dx) {
       const after = patched(
         div(this.window, this.id),
-        outside((div, vector) => div.move(vector(vector.dx, 20))),
-        outside((div, vector) => vector(-vector.dx, vector.dy)),
+        outside((div, vec) => div.move(vector(vec.dx, 20))),
+        outside((div, vec) => vector(-vec.dx, vec.dy)),
         trace()
       ).move(vector(dx, 0));
-      if (after.dx != 0) {
+      if (after.dx != 0 && this.alive) {
         this.window.setTimeout(function() {
           this.attack(v, after.dx);
         }.bind(this), v);
+      }
+      if (!this.alive) {
+        div(this.window, this.id).element().remove();
       }
     },
   };

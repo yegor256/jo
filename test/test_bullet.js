@@ -31,7 +31,7 @@ describe('bullet', function() {
         observed = true;
       },
     };
-    b.launch(laser, 10);
+    b.launch(laser, army(), 10);
     setTimeout(function() {
       assert.ok(observed, 'The bulled didn\'t fly out off the screen');
       done();

@@ -38,16 +38,17 @@ function bullet(w, v, d) {
     window: w,
     velocity: v,
     dy: d,
-    launch: function(laser, x) {
+    launch: function(laser, army, x) {
       const e = this.window.document.createElement('div');
       e.id = 'bullet';
       e.style.left = x + 'px';
       this.window.document.getElementById('field').appendChild(e);
-      this.fly(laser);
+      this.fly(laser, army);
     },
-    fly: function(laser) {
+    fly: function(laser, army) {
       const v = patched(
         div(this.window, 'bullet'),
+        kill(army),
         missed(laser),
         outside((div, vec) => vector(0, 0)),
         trace(),
@@ -55,7 +56,7 @@ function bullet(w, v, d) {
       ).move(vector(0, this.dy));
       if (v.dy != 0) {
         this.window.setTimeout(function() {
-          this.fly(laser, this.dy);
+          this.fly(laser, army);
         }.bind(this), this.velocity);
       }
     },

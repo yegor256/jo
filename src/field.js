@@ -37,7 +37,7 @@ function field(w) {
     laser: laser(w),
     army: army(w),
     init: function() {
-      this.laser.init();
+      this.laser.init(this.army);
       this.army.init();
     },
   };

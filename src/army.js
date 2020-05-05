@@ -34,12 +34,21 @@
 function army(w) {
   return {
     window: w,
-    invaders: 0,
+    invaders: [],
+    total: 0,
     init: function(v = 10000) {
       this.launch(v);
     },
+    kill: function(x, y) {
+      this.invaders.forEach(function(i, idx, obj) {
+        if (i.fire(x, y)) {
+          obj.splice(idx, 1);
+        }
+      });
+    },
     launch: function(v) {
-      const i = invader(this.window, this.invaders++);
+      const i = invader(this.window, this.total++);
+      this.invaders.push(i);
       i.launch();
       this.window.setTimeout(function() {
         this.launch(v - 50);
