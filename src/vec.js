@@ -36,8 +36,5 @@ function vec(x, y) {
   return {
     dx: x,
     dy: y,
-    zero: function() {
-      return this.dx === 0 && this.dy === 0;
-    },
   };
 }

@@ -27,7 +27,7 @@ describe('bullet', function() {
     const b = bullet(window, 1);
     let observed = false;
     const laser = {
-      hit: function() {
+      missed: function() {
         observed = true;
       },
     };

@@ -22,11 +22,23 @@
  * SOFTWARE.
  */
 
-describe('vec', function() {
-  it('checks itself for zero', function() {
-    const v1 = vec(0, 0);
-    assert.ok(v1.dx === 0);
-    const v2 = vec(1, 0);
-    assert.ok(v2.dx === 1);
-  });
-});
+/* exported missed */
+
+/**
+ * The constructor of the missed.
+ *
+ * @constructor
+ * @param {Lazer} lz - The lazer to hit when missed
+ * @return {Patch} The patch object
+ */
+function missed(lz) {
+  return {
+    laser: lz,
+    moved: function(div, vector) {
+      if (outside((d, v) => vec(0, 0)).moved(div, vector).dy == 0) {
+        lz.missed();
+      }
+      return vector;
+    },
+  };
+}

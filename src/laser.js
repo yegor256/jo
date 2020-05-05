@@ -38,11 +38,9 @@ function laser(w) {
     loaded: true,
     move: function(dx) {
       patched(
-          div(this.window, 'laser'),
-          outside(function(div, vector) {
-            return div.move(vec(-vector.dx, vector.dy));
-          }),
-          trace()
+        div(this.window, 'laser'),
+        outside((d, v) => d.move(vec(-v.dx, v.dy))),
+        trace()
       ).move(vec(dx, 0));
     },
     shoot: function() {
@@ -53,7 +51,7 @@ function laser(w) {
         this.bullet.launch(this, x);
       }
     },
-    hit: function() {
+    missed: function() {
       this.loaded = true;
     },
     init: function() {

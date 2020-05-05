@@ -22,11 +22,20 @@
  * SOFTWARE.
  */
 
-describe('vec', function() {
-  it('checks itself for zero', function() {
-    const v1 = vec(0, 0);
-    assert.ok(v1.dx === 0);
-    const v2 = vec(1, 0);
-    assert.ok(v2.dx === 1);
+describe('missed', function() {
+  it('hits the laser when the div is outside of visible area', function() {
+    const e = document.createElement('div');
+    e.id = 'bullet';
+    document.getElementById('field').appendChild(e);
+    const d = div(window, 'bullet');
+    d.move(vec(-1000, 0));
+    let observed = false;
+    const laser = {
+      missed: function() {
+        observed = true;
+      },
+    };
+    missed(laser).moved(d, vec(0, 0));
+    assert.ok(observed);
   });
 });

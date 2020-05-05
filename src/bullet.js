@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-/* exported bullet */
+/* exported bullet, eslint-disable indent */
 
 /**
  * The constructor of the bullet.
@@ -44,16 +44,14 @@ function bullet(w, v = 10) {
       this.fly(laser, dy);
     },
     fly: function(laser, dy) {
-      const after = patched(
-          div(this.window, 'bullet'),
-          outside(function(div, vector) {
-            laser.hit();
-            return vec(0, 0);
-          }),
-          trace(),
-          grave()
+      const v = patched(
+        div(this.window, 'bullet'),
+        missed(laser),
+        outside((div, vector) => vec(0, 0)),
+        trace(),
+        grave()
       ).move(vec(0, dy));
-      if (!after.zero()) {
+      if (v.dy != 0) {
         this.window.setTimeout(function() {
           this.fly(laser, dy);
         }.bind(this), this.velocity);

@@ -33,7 +33,7 @@
 function grave() {
   return {
     moved: function(div, vector) {
-      if (vector.dx === 0 && vector.dy === 0) {
+      if (vector.dx == 0 && vector.dy == 0) {
         div.element().remove();
       }
       return vector;
