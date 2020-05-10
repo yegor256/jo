@@ -39,7 +39,6 @@ function quit(a) {
   return {
     army: a,
     moved: function(div, vector) {
-      console.log('---');
       const element = div.element();
       const box = element.parentElement.getBoundingClientRect();
       const rect = div.rect();
