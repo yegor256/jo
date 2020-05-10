@@ -53,7 +53,7 @@ function army(w) {
     launch: function(v) {
       const i = invader(this.window, this.total++);
       this.invaders.push(i);
-      i.launch();
+      i.launch(this);
       this.window.setTimeout(function() {
         this.launch(v - 50);
       }.bind(this), v);

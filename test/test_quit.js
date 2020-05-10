@@ -22,31 +22,17 @@
  * SOFTWARE.
  */
 
-/* exported quit */
-
-/**
- * The constructor of the quit.
- *
- * This patch checks the location of the invader (provided in the DIV argument),
- * and instructs the army to stop if the invader is too low (below the
- * lowest border of the screen).
- *
- * @constructor
- * @param {Army} a - The army
- * @return {Patch} The patch object
- */
-function quit(a) {
-  return {
-    army: a,
-    moved: function(div, vector) {
-      console.log('---');
-      const element = div.element();
-      const box = element.parentElement.getBoundingClientRect();
-      const rect = div.rect();
-      if (rect.top > box.height - rect.height) {
-        this.army.stop();
-      }
-      return vector;
-    },
-  };
-}
+describe('quit', function() {
+  it('stops all invaders', function() {
+    const a = army(window);
+    a.init();
+    const i = div(window, 'invader0');
+    i.move(vector(0, 10000));
+    triggered = false;
+    alert = function() {
+      triggered = true;
+    };
+    quit(a).moved(i, vector(0, 0));
+    assert.ok(triggered);
+  });
+});
