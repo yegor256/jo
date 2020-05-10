@@ -22,41 +22,23 @@
  * SOFTWARE.
  */
 
-/* exported army */
-
-/**
- * The constructor of the army.
- *
- * @constructor
- * @param {Document} w - The DOM window to encapsulate
- * @return {Army} The army object
- */
-function army(w) {
-  return {
-    window: w,
-    invaders: [],
-    total: 0,
-    init: function(v = 10000) {
-      this.launch(v);
-    },
-    stop: function() {
-      this.invaders.forEach((i) => i.stop());
-      alert('Game over!');
-    },
-    kill: function(x, y) {
-      this.invaders.forEach(function(i, idx, obj) {
-        if (i.fire(x, y)) {
-          obj.splice(idx, 1);
-        }
-      });
-    },
-    launch: function(v) {
-      const i = invader(this.window, this.total++);
-      this.invaders.push(i);
-      i.launch();
-      this.window.setTimeout(function() {
-        this.launch(v - 50);
-      }.bind(this), v);
-    },
-  };
-}
+describe('kill', function() {
+  it('destroys the invader', function(done) {
+    const a = army(window);
+    const e = document.createElement('div');
+    e.id = 'bullet';
+    a.className = 'bullet';
+    document.getElementById('field').appendChild(e);
+    const b = div(window, 'bullet');
+    a.init();
+    const i = div(window, 'invader0');
+    const ri = i.rect();
+    const rb = b.rect();
+    b.move(vector(ri.left - rb.left, ri.top - rb.top));
+    kill(a).moved(b, vector(0, 0));
+    setTimeout(function() {
+      assert.ok(document.getElementById('invader0') == null);
+      done();
+    }, 100);
+  });
+});

@@ -27,6 +27,10 @@
 /**
  * The constructor of the outside.
  *
+ * This patch checks the location of the provided DIV and calls the
+ * encapsulated function if the element is already outside the borders
+ * of its parent element.
+ *
  * @constructor
  * @param {Function} a - The action to call when hit
  * @return {Patch} The patch object

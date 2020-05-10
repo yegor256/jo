@@ -27,6 +27,8 @@
 /**
  * The constructor of the grave.
  *
+ * This patch kills the HTML element if the vector is zero (0,0).
+ *
  * @constructor
  * @return {Patch} The patch object
  */

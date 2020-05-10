@@ -27,6 +27,9 @@
 /**
  * The constructor of the trace.
  *
+ * This is a supplementary patch, which logs every move of the element
+ * to the console.
+ *
  * @constructor
  * @return {Patch} The patch object
  */

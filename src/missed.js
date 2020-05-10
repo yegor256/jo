@@ -27,6 +27,10 @@
 /**
  * The constructor of the missed.
  *
+ * This patch calls the method missed() in the encapsulated laser, if the
+ * bullet (provided in the argument DIV) is already outside of the field.
+ * The laser most probably will reload itself.
+ *
  * @constructor
  * @param {Lazer} lz - The lazer to hit when missed
  * @return {Patch} The patch object

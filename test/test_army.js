@@ -31,4 +31,9 @@ describe('army', function() {
       done();
     }, 100);
   });
+  it('can be stopped', function() {
+    const a = army(window);
+    a.init(10);
+    a.stop();
+  });
 });

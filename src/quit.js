@@ -22,41 +22,30 @@
  * SOFTWARE.
  */
 
-/* exported army */
+/* exported quit */
 
 /**
- * The constructor of the army.
+ * The constructor of the quit.
+ *
+ * This patch checks the location of the invader (provided in the DIV argument),
+ * and instructs the army to stop if the invader is too low (below the
+ * lowest border of the screen).
  *
  * @constructor
- * @param {Document} w - The DOM window to encapsulate
- * @return {Army} The army object
+ * @param {Army} a - The army
+ * @return {Patch} The patch object
  */
-function army(w) {
+function quit(a) {
   return {
-    window: w,
-    invaders: [],
-    total: 0,
-    init: function(v = 10000) {
-      this.launch(v);
-    },
-    stop: function() {
-      this.invaders.forEach((i) => i.stop());
-      alert('Game over!');
-    },
-    kill: function(x, y) {
-      this.invaders.forEach(function(i, idx, obj) {
-        if (i.fire(x, y)) {
-          obj.splice(idx, 1);
-        }
-      });
-    },
-    launch: function(v) {
-      const i = invader(this.window, this.total++);
-      this.invaders.push(i);
-      i.launch();
-      this.window.setTimeout(function() {
-        this.launch(v - 50);
-      }.bind(this), v);
+    army: a,
+    moved: function(div, vector) {
+      const element = div.element();
+      const box = element.parentElement.getBoundingClientRect();
+      const rect = div.rect();
+      if (rect.top > box.height - rect.height) {
+        this.army.stop();
+      }
+      return vector;
     },
   };
 }
