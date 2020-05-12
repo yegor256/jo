@@ -1,4 +1,4 @@
-<!--
+/*
  * The MIT License (MIT)
  *
  * Copyright (c) 2019-2020 Yegor Bugayenko
@@ -20,30 +20,43 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <link type='text/css' href='css/main.css' rel='stylesheet'/>
-    <script src='src/vector.js'></script>
-    <script src='src/trace.js'></script>
-    <script src='src/bullet.js'></script>
-    <script src='src/invader.js'></script>
-    <script src='src/army.js'></script>
-    <script src='src/laser.js'></script>
-    <script src='src/field.js'></script>
-    <script src='src/div.js'></script>
-    <script src='src/patched.js'></script>
-    <script src='src/grave.js'></script>
-    <script src='src/outside.js'></script>
-    <script src='src/missed.js'></script>
-    <script src='src/kill.js'></script>
-    <script src='src/quit.js'></script>
-    <title>jo</title>
-  </head>
-  <body onload="field(window).init();">
-    <section id="field">
-      <div id="laser"></div>
-    </section>
-  </body>
-</html>
+ */
+
+/* exported army */
+
+/**
+ * The constructor of the army.
+ *
+ * @constructor
+ * @param {Document} w - The DOM window to encapsulate
+ * @return {Army} The army object
+ */
+function army(w) {
+  return {
+    window: w,
+    invaders: [],
+    total: 0,
+    init: function(v = 10000) {
+      this.launch(v);
+    },
+    stop: function() {
+      this.invaders.forEach((i) => i.stop());
+      alert('Game over!');
+    },
+    kill: function(x, y) {
+      this.invaders.forEach(function(i, idx, obj) {
+        if (i.fire(x, y)) {
+          obj.splice(idx, 1);
+        }
+      });
+    },
+    launch: function(v) {
+      const i = invader(this.window, this.total++);
+      this.invaders.push(i);
+      i.launch(this);
+      this.window.setTimeout(function() {
+        this.launch(v - 50);
+      }.bind(this), v);
+    },
+  };
+}

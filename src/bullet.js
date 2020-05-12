@@ -1,4 +1,4 @@
-<!--
+/*
  * The MIT License (MIT)
  *
  * Copyright (c) 2019-2020 Yegor Bugayenko
@@ -20,30 +20,45 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <link type='text/css' href='css/main.css' rel='stylesheet'/>
-    <script src='src/vector.js'></script>
-    <script src='src/trace.js'></script>
-    <script src='src/bullet.js'></script>
-    <script src='src/invader.js'></script>
-    <script src='src/army.js'></script>
-    <script src='src/laser.js'></script>
-    <script src='src/field.js'></script>
-    <script src='src/div.js'></script>
-    <script src='src/patched.js'></script>
-    <script src='src/grave.js'></script>
-    <script src='src/outside.js'></script>
-    <script src='src/missed.js'></script>
-    <script src='src/kill.js'></script>
-    <script src='src/quit.js'></script>
-    <title>jo</title>
-  </head>
-  <body onload="field(window).init();">
-    <section id="field">
-      <div id="laser"></div>
-    </section>
-  </body>
-</html>
+ */
+
+/* exported bullet, eslint-disable indent */
+
+/**
+ * The constructor of the bullet.
+ *
+ * @constructor
+ * @param {Document} w - The DOM window to encapsulate
+ * @param {Integer} v - The velocity to fly with
+ * @param {Integer} d - The DY to apply on every step
+ * @return {Bullet} The invader object
+ */
+function bullet(w, v, d) {
+  return {
+    window: w,
+    velocity: v,
+    dy: d,
+    launch: function(laser, army, x) {
+      const e = this.window.document.createElement('div');
+      e.id = 'bullet';
+      e.style.left = x + 'px';
+      this.window.document.getElementById('field').appendChild(e);
+      this.fly(laser, army);
+    },
+    fly: function(laser, army) {
+      const v = patched(
+        div(this.window, 'bullet'),
+        kill(army),
+        missed(laser),
+        outside((div, vec) => vector(0, 0)),
+        trace(),
+        grave()
+      ).move(vector(0, this.dy));
+      if (v.dy != 0) {
+        this.window.setTimeout(function() {
+          this.fly(laser, army);
+        }.bind(this), this.velocity);
+      }
+    },
+  };
+}

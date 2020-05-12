@@ -1,4 +1,4 @@
-<!--
+/*
  * The MIT License (MIT)
  *
  * Copyright (c) 2019-2020 Yegor Bugayenko
@@ -20,30 +20,20 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <link type='text/css' href='css/main.css' rel='stylesheet'/>
-    <script src='src/vector.js'></script>
-    <script src='src/trace.js'></script>
-    <script src='src/bullet.js'></script>
-    <script src='src/invader.js'></script>
-    <script src='src/army.js'></script>
-    <script src='src/laser.js'></script>
-    <script src='src/field.js'></script>
-    <script src='src/div.js'></script>
-    <script src='src/patched.js'></script>
-    <script src='src/grave.js'></script>
-    <script src='src/outside.js'></script>
-    <script src='src/missed.js'></script>
-    <script src='src/kill.js'></script>
-    <script src='src/quit.js'></script>
-    <title>jo</title>
-  </head>
-  <body onload="field(window).init();">
-    <section id="field">
-      <div id="laser"></div>
-    </section>
-  </body>
-</html>
+ */
+
+describe('army', function() {
+  it('connects itself to the DOM', function(done) {
+    const a = army(window);
+    a.init(10);
+    setTimeout(function() {
+      assert.ok(div(window, 'invader0').rect().left > 0);
+      done();
+    }, 100);
+  });
+  it('can be stopped', function() {
+    const a = army(window);
+    a.init(10);
+    a.stop();
+  });
+});

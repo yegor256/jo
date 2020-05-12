@@ -1,4 +1,4 @@
-<!--
+/*
  * The MIT License (MIT)
  *
  * Copyright (c) 2019-2020 Yegor Bugayenko
@@ -20,30 +20,32 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <link type='text/css' href='css/main.css' rel='stylesheet'/>
-    <script src='src/vector.js'></script>
-    <script src='src/trace.js'></script>
-    <script src='src/bullet.js'></script>
-    <script src='src/invader.js'></script>
-    <script src='src/army.js'></script>
-    <script src='src/laser.js'></script>
-    <script src='src/field.js'></script>
-    <script src='src/div.js'></script>
-    <script src='src/patched.js'></script>
-    <script src='src/grave.js'></script>
-    <script src='src/outside.js'></script>
-    <script src='src/missed.js'></script>
-    <script src='src/kill.js'></script>
-    <script src='src/quit.js'></script>
-    <title>jo</title>
-  </head>
-  <body onload="field(window).init();">
-    <section id="field">
-      <div id="laser"></div>
-    </section>
-  </body>
-</html>
+ */
+
+/* exported quit */
+
+/**
+ * The constructor of the quit.
+ *
+ * This patch checks the location of the invader (provided in the DIV argument),
+ * and instructs the army to stop if the invader is too low (below the
+ * lowest border of the screen).
+ *
+ * @constructor
+ * @param {Army} a - The army
+ * @return {Patch} The patch object
+ */
+function quit(a) {
+  return {
+    army: a,
+    moved: function(div, vector) {
+      const element = div.element();
+      const box = element.parentElement.getBoundingClientRect();
+      const rect = div.rect();
+      if (rect.top > box.height - rect.height) {
+        this.army.stop();
+      }
+      return vector;
+    },
+  };
+}

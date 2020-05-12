@@ -1,4 +1,4 @@
-<!--
+/*
  * The MIT License (MIT)
  *
  * Copyright (c) 2019-2020 Yegor Bugayenko
@@ -20,30 +20,29 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <link type='text/css' href='css/main.css' rel='stylesheet'/>
-    <script src='src/vector.js'></script>
-    <script src='src/trace.js'></script>
-    <script src='src/bullet.js'></script>
-    <script src='src/invader.js'></script>
-    <script src='src/army.js'></script>
-    <script src='src/laser.js'></script>
-    <script src='src/field.js'></script>
-    <script src='src/div.js'></script>
-    <script src='src/patched.js'></script>
-    <script src='src/grave.js'></script>
-    <script src='src/outside.js'></script>
-    <script src='src/missed.js'></script>
-    <script src='src/kill.js'></script>
-    <script src='src/quit.js'></script>
-    <title>jo</title>
-  </head>
-  <body onload="field(window).init();">
-    <section id="field">
-      <div id="laser"></div>
-    </section>
-  </body>
-</html>
+ */
+
+/* exported missed */
+
+/**
+ * The constructor of the missed.
+ *
+ * This patch calls the method missed() in the encapsulated laser, if the
+ * bullet (provided in the argument DIV) is already outside of the field.
+ * The laser most probably will reload itself.
+ *
+ * @constructor
+ * @param {Lazer} lz - The lazer to hit when missed
+ * @return {Patch} The patch object
+ */
+function missed(lz) {
+  return {
+    laser: lz,
+    moved: function(div, vec) {
+      if (outside((d, v) => vector(0, 0)).moved(div, vec).dy == 0) {
+        lz.missed();
+      }
+      return vec;
+    },
+  };
+}
