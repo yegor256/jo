@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": "yegor256/jo",
   "devDependencies": {
-    "eslint": "5.15.3",
+    "eslint": "5.16.0",
     "eslint-config-google": "0.12.0",
     "grunt": "^1.5.3",
     "grunt-eslint": "21.0.0",
