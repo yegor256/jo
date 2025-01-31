@@ -1,24 +1,24 @@
 {
-  "name": "jo",
-  "version": "1.0.0",
   "author": "Yegor Bugayenko",
-  "license": "MIT",
-  "repository": "yegor256/jo",
   "devDependencies": {
     "eslint": "5.15.3",
     "eslint-config-google": "0.12.0",
     "grunt": "^1.5.3",
-    "grunt-eslint": "21.0.0",
     "grunt-contrib-clean": "2.0.0",
-    "mocha": "6.1.4",
-    "karma": "6.4.1",
+    "grunt-eslint": "21.0.0",
     "grunt-karma": "3.0.2",
-    "karma-mocha": "1.3.0",
-    "karma-fixture": "0.2.6",
+    "karma": "6.4.1",
     "karma-assert": "1.0.1",
     "karma-coverage": "2.0.1",
-    "karma-html2js-preprocessor": "1.1.0",
     "karma-firefox-launcher": "1.3.0",
-    "karma-mocha-reporter": "2.2.5"
-  }
+    "karma-fixture": "0.2.6",
+    "karma-html2js-preprocessor": "1.1.0",
+    "karma-mocha": "1.3.0",
+    "karma-mocha-reporter": "2.2.5",
+    "mocha": "6.1.4"
+  },
+  "license": "MIT",
+  "name": "jo",
+  "repository": "yegor256/jo",
+  "version": "1.0.0"
 }
