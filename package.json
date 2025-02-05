@@ -6,7 +6,7 @@
     "grunt": "^1.5.3",
     "grunt-contrib-clean": "2.0.0",
     "grunt-eslint": "21.0.0",
-    "grunt-karma": "3.0.2",
+    "grunt-karma": "4.0.2",
     "karma": "6.4.4",
     "karma-assert": "1.0.1",
     "karma-coverage": "2.0.1",
