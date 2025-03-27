@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: Copyright (c) 2019-2025 Yegor Bugayenko
+// SPDX-License-Identifier: MIT
+
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
