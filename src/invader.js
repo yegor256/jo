@@ -32,8 +32,8 @@ function invader(w, i) {
       const d = div(this.window, this.id);
       const r = d.rect();
       let killed = false;
-      if (x < r.left + r.width && x >= r.left
-        && y < r.top + r.height && y >= r.top) {
+      if (x < r.left + r.width && x >= r.left &&
+        y < r.top + r.height && y >= r.top) {
         this.alive = false;
         killed = true;
       }
