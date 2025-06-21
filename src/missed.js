@@ -33,7 +33,7 @@
  * The laser most probably will reload itself.
  *
  * @constructor
- * @param {Lazer} lz - The lazer to hit when missed
+ * @param {Lazer} lz - The laser to hit when missed
  * @return {Patch} The patch object
  */
 function missed(lz) {
