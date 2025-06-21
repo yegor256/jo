@@ -10,4 +10,3 @@ merge:
   script: |-
     npm ci
     grunt --port=4000 --monochrome
-
