@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-/* exported bullet, eslint-disable indent */
+/* exported bullet */
 
 /**
  * The constructor of the bullet.
@@ -12,7 +12,7 @@
  * @param {Document} w - The DOM window to encapsulate
  * @param {Integer} v - The velocity to fly with
  * @param {Integer} d - The DY to apply on every step
- * @return {Bullet} The invader object
+ * @return {Bullet} The bullet object
  */
 function bullet(w, v, d) {
   return {
@@ -35,7 +35,7 @@ function bullet(w, v, d) {
         trace(),
         grave()
       ).move(vector(0, this.dy));
-      if (v.dy != 0) {
+      if (v.dy !== 0) {
         this.window.setTimeout(function() {
           this.fly(laser, army);
         }.bind(this), this.velocity);

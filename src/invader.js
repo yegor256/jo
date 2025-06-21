@@ -11,8 +11,6 @@
  * @constructor
  * @param {Document} w - The DOM window to encapsulate
  * @param {Integer} i - The ID
- * @param {Float} v - The velocity
- * @param {Float} a - The acceleration
  * @return {Invader} The invader object
  */
 function invader(w, i) {
@@ -49,7 +47,7 @@ function invader(w, i) {
         quit(army),
         trace()
       ).move(vector(dx, 0));
-      if (after.dx != 0 && this.alive) {
+      if (after.dx !== 0 && this.alive) {
         this.window.setTimeout(function() {
           this.attack(army, v, after.dx);
         }.bind(this), v);

@@ -10,8 +10,8 @@
  *
  * @constructor
  * @param {Document} w - The DOM window to encapsulate
- * @param {Integer} i - The ID of the DIV
- * @return {Div} The DIV object
+ * @param {Integer} i - The ID of the div
+ * @return {Div} The div object
  */
 function div(w, i) {
   return {
@@ -22,7 +22,7 @@ function div(w, i) {
     },
     element: function() {
       const e = this.window.document.getElementById(this.id);
-      if (e == null) {
+      if (e === null) {
         throw new Error('The element #' + this.id + ' not found in DOM');
       }
       return e;

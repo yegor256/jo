@@ -1,4 +1,4 @@
-# Sources for the "Junior Objects" Book
+# Sources for the "_Junior Objects_" Book
 
 [![grunt](https://github.com/yegor256/jo/workflows/grunt/badge.svg)](https://github.com/yegor256/jo/actions?query=workflow%3Agrunt)
 

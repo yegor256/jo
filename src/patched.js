@@ -11,7 +11,7 @@
  * @constructor
  * @param {Div} d - The div to patch
  * @param {Array} ps - List of patches
- * @return {Div} The DIV object
+ * @return {Div} The div object
  */
 function patched(d, ...ps) {
   return {
