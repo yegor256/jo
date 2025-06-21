@@ -20,7 +20,7 @@ function missed(lz) {
   return {
     laser: lz,
     moved: function(div, vec) {
-      if (outside((d, v) => vector(0, 0)).moved(div, vec).dy === 0) {
+      if (outside((_d, _v) => vector(0, 0)).moved(div, vec).dy === 0) {
         lz.missed();
       }
       return vec;

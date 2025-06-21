@@ -11,7 +11,7 @@ describe('outside', function() {
     const d = div(window, 'bullet');
     d.move(vector(-1000, 0));
     let observed = false;
-    outside(function(div, vector) {
+    outside(function(_div, _vector) {
       observed = true;
     }).moved(d, vector(0, 0));
     assert.ok(observed);

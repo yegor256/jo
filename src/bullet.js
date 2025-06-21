@@ -31,7 +31,7 @@ function bullet(w, v, d) {
         div(this.window, 'bullet'),
         kill(army),
         missed(laser),
-        outside((div, vec) => vector(0, 0)),
+        outside((_div, _vec) => vector(0, 0)),
         trace(),
         grave()
       ).move(vector(0, this.dy));
