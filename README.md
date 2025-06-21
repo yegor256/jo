@@ -1,6 +1,7 @@
 # Sources for the "_Junior Objects_" Book
 
 [![grunt](https://github.com/yegor256/jo/workflows/grunt/badge.svg)](https://github.com/yegor256/jo/actions?query=workflow%3Agrunt)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/jo/blob/master/LICENSE.txt)
 
 It is a simple HTML+JavaScript game, also known as
 [Space Invaders](https://en.wikipedia.org/wiki/Space_Invaders).
