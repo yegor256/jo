@@ -7,9 +7,11 @@ docker:
 install: |-
   sudo /usr/bin/install-node.sh
   sudo npm install -g grunt
-  sudo apt-get -y install snapd
-  sudo systemctl enable --now snapd.socket
-  sudo snap install firefox
+  sudo apt-get -y update
+  sudo apt-get -y install software-properties-common
+  sudo add-apt-repository ppa:mozillateam/ppa
+  sudo apt-get -y update
+  sudo apt-get -y install firefox
 merge:
   script: |-
     npm ci
