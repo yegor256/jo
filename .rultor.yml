@@ -7,7 +7,7 @@ docker:
 install: |-
   sudo /usr/bin/install-node.sh
   sudo npm install -g grunt
-  sudo apt-get update && sudo apt-get install firefox
+  sudo snap install firefox
 merge:
   script: |-
     npm ci
