@@ -9,5 +9,5 @@ install: |-
 merge:
   script: |-
     npm ci
-    npm install -g grunt
+    sudo npm install -g grunt
     grunt --port=4000 --monochrome
