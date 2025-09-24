@@ -8,6 +8,7 @@ install: |-
   sudo /usr/bin/install-node.sh
   sudo npm install -g grunt
   sudo apt-get -y install snapd
+  sudo systemctl enable --now snapd.socket
   sudo snap install firefox
 merge:
   script: |-
