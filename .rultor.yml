@@ -9,7 +9,7 @@ install: |-
   sudo npm install -g grunt
   sudo apt-get -y update
   sudo apt-get -y install software-properties-common
-  sudo add-apt-repository ppa:mozillateam/ppa
+  sudo add-apt-repository -y ppa:mozillateam/ppa
   sudo apt-get -y update
   sudo apt-get -y install firefox
 merge:
