@@ -6,8 +6,9 @@ docker:
   image: yegor256/ruby
 install: |-
   sudo /usr/bin/install-node.sh
+  sudo npm install -g grunt
+  sudo apt-get update && sudo apt-get install firefox
 merge:
   script: |-
     npm ci
-    sudo npm install -g grunt
     grunt --port=4000 --monochrome
