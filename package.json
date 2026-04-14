@@ -4,7 +4,7 @@
     "@eslint/js": "^10.0.0",
     "eslint": "10.1.0",
     "eslint-config-google": "0.14.0",
-    "grunt": "1.6.1",
+    "grunt": "1.6.2",
     "grunt-contrib-clean": "2.0.1",
     "grunt-eslint": "26.0.0",
     "grunt-karma": "4.0.2",
