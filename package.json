@@ -2,7 +2,7 @@
   "author": "Yegor Bugayenko",
   "devDependencies": {
     "@eslint/js": "^10.0.0",
-    "eslint": "10.1.0",
+    "eslint": "10.2.1",
     "eslint-config-google": "0.14.0",
     "grunt": "1.6.2",
     "grunt-contrib-clean": "2.0.1",
